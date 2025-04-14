@@ -1,0 +1,15 @@
+:root {
+  --bg-color: #0a192f;
+  --text-color: #ccd6f6;
+  --accent-color: #64ffda;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Adjust layout for smaller screens */
+}
