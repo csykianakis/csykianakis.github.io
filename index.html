@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -14,13 +14,7 @@
       --accent-color: #64ffda;
       --card-bg: #112240;
       --transition: 0.3s ease;
-    }
-
-    [data-theme='light'] {
-      --bg-color: #ffffff;
-      --text-color: #0a192f;
-      --accent-color: #0077b6;
-      --card-bg: #f1f1f1;
+      --job-title-color: #ffffff; /* Job title color in dark mode */
     }
 
     * {
@@ -35,11 +29,13 @@
       color: var(--text-color);
       line-height: 1.6;
       padding: 2rem;
+      transition: background var(--transition), color var(--transition);
     }
 
     header {
       text-align: center;
       margin-bottom: 2rem;
+      animation: fadeInDown 1s ease-out;
     }
 
     header h1 {
@@ -68,52 +64,8 @@
     }
 
     .btn:hover {
+      transform: translateY(-2px);
       opacity: 0.85;
-    }
-
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 24px;
-    }
-
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: 0.4s;
-      border-radius: 24px;
-    }
-
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 4px;
-      bottom: 3px;
-      background-color: white;
-      transition: 0.4s;
-      border-radius: 50%;
-    }
-
-    input:checked + .slider {
-      background-color: var(--accent-color);
-    }
-
-    input:checked + .slider:before {
-      transform: translateX(26px);
     }
 
     main {
@@ -127,6 +79,7 @@
       margin-bottom: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 0.8s ease-out;
     }
 
     section h2 {
@@ -134,13 +87,21 @@
       color: var(--accent-color);
     }
 
-    .skills-list, ul {
+    ul {
       list-style-type: none;
       padding-left: 0;
     }
 
-    .skills-list li, ul li {
+    li {
       padding: 0.25rem 0;
+    }
+
+    h3 {
+      color: var(--job-title-color); /* Job title color in dark mode */
+      font-size: 1.3rem;
+      font-weight: bold;
+      display: inline;
+      border-bottom: 2px solid #ffffff;
     }
 
     @media (max-width: 768px) {
@@ -152,32 +113,155 @@
         padding: 1rem;
       }
     }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
 <body>
   <header>
     <h1>Charalampos Sykianakis</h1>
-    <p>Data Scientist | Business Intelligence | Machine Learning</p>
+    <p>Data Scientist | Business Intelligence Developer| Machine Learning Engineer</p>
     <div class="header-buttons">
       <a href="resume.pdf" download class="btn">Download Resume</a>
-      <label class="switch">
-        <input type="checkbox" id="theme-toggle">
-        <span class="slider"></span>
-      </label>
     </div>
   </header>
 
   <main>
-    <!-- Sections like personal, experience, education etc. can go here -->
-  </main>
+    <section>
+      <h2>Contact</h2>
+      <ul>
+        <li><strong>Address:</strong> Arsenaalstraat, 2800 Mechelen</li>
+        <li><strong>Phone:</strong> +32 470582209</li>
+        <li><strong>Email:</strong> c.sykianakis@gmail.com</li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/csykianakis" target="_blank" style="color: var(--accent-color);">csykianakis</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/charis-sykianakis-8132a1154/" target="_blank" style="color: var(--accent-color);">charis-sykianakis</a></li>
+      </ul>
+    </section>
 
-  <script>
-    const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('change', function () {
-      document.documentElement.setAttribute('data-theme', this.checked ? 'light' : 'dark');
-    });
-  </script>
+    <section>
+      <h2>Resume Objective</h2>
+      <p>I am currently working as a Data Scientist. My target is to combine the knowledge from my two degrees and apply Data Science, Business Intelligence and Machine Learning to create value for the company I work.</p>
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+
+      <ul>
+        <li class="job">
+          <ul>
+            <li style="list-style-type: disc; margin-left: 1.5rem;">
+              <h3>Data Scientist – European Commission DG-RTD</h3>
+            </li>
+          </ul>
+          <p><strong>Sword Group</strong>, Brussels, Belgium (Oct 2024 – Present)</p>
+          <p>
+            In my current role, I support the Data team with various ongoing projects. I am leading a text classification project aimed at achieving optimal outcomes with minimal resources, utilizing pre-trained LLMs such as LLaMA, BERT, and other models from Hugging Face. Additionally, I am responsible for the creation of a reporting template, where the key challenge is gathering business requirements and translating them into technical solutions. My day-to-day tasks also involve the development and maintenance of dashboards and using SQL for reporting purposes.
+          </p>
+        </li>
+        <li class="job">
+          <ul>
+            <li style="list-style-type: disc; margin-left: 1.5rem;">
+              <h3>Business Intelligence Developer</h3>
+            </li>
+          </ul>
+          <p><strong>Eurobank Equities</strong>, Athens, Greece (Oct 2023 – Sep 2024)</p>
+          <p>
+            As a BI Developer, I took charge of all Data Science and Analytics needs within the company. I was responsible for developing the Power BI environment from scratch and creating various dashboards for internal and external reporting. I regularly interacted with the CTO and CEO to help shape the future direction of the BI department. Additionally, I worked on numerous ad-hoc projects, such as Python automation scripts, market research, chatbot development, machine learning-based time-series anomaly detection, Power Automate workflows, Power Apps, customer segmentation, Docker containerization, and maintaining VBScript.
+          </p>
+        </li>
+        <li class="job">
+          <ul>
+            <li style="list-style-type: disc; margin-left: 1.5rem;">
+              <h3>Business Intelligence Analyst</h3>
+            </li>
+          </ul>
+          <p><strong>Aksia LLC</strong>, Athens, Greece (Jan 2023 – Aug 2023)</p>
+          <p>
+            In this role, my focus was on creating analytical solutions for internal use. I worked primarily with MS SQL, Power BI, and Power Automate. My responsibilities included creating financial performance and productivity KPIs, as well as maintaining and enhancing existing dashboards and reports. I was also responsible for developing unique, out-of-the-box visualizations and ad-hoc projects that required Python scripts and web scraping for data extraction.
+          </p>
+        </li>
+        <li class="job">
+          <ul>
+            <li style="list-style-type: disc; margin-left: 1.5rem;">
+              <h3>Operations Analyst</h3>
+            </li>
+          </ul>
+          <p><strong>Aksia LLC</strong>, Athens, Greece (Nov 2021 – Dec 2022)</p>
+          <p>
+            I managed a portfolio of 130 client funds, including creating digital backups, reviewing financial statements, and analyzing IRR and pro-rata levels. I was also responsible for overseeing daily cash flow, capital financial statements, and custodial bank activities. A significant part of my role involved automating various financial processes using Microsoft Excel Macros.
+          </p>
+        </li>
+        <li class="job">
+          <ul>
+            <li style="list-style-type: disc; margin-left: 1.5rem;">
+              <h3>SAP Financial Consultant</h3>
+            </li>
+          </ul>
+          <p><strong>Real Consulting</strong>, Athens, Greece (Nov 2020 – Nov 2021)</p>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <ul>
+        <li><strong>MSc in Data Science</strong> – Athens University of Economics and Business, Sep 2022 - Jun 2024</li>
+        <li><strong>BSc in Finance</strong> – University of Piraeus, Oct 2014 - Sep 2020</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li>Python</li>
+        <li>Machine Learning</li>
+        <li>R</li>
+        <li>SQL</li>
+        <li>Power BI</li>
+        <li>Apache Spark / PySpark</li>
+        <li>Docker</li>
+        <li>FastAPI</li>
+        <li>VBScript</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <p>Projects in Python: Anomaly Detection for Finance application, Topic Modelling, Sentiment Analysis, Finetuning BERT for Greek Text Classification, Customer Segmentation, Graph - Text classification for URLs. (Find more on GitHub)</p>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li><strong>IBM Data Analyst Professional Certificate</strong>, 2023 – <a href="https://www.coursera.org/account/accomplishments/professional-cert/THHDELFUW8JX" target="_blank" style="color: var(--accent-color);">View</a></li>
+        <li><strong>PL-300 Microsoft Power BI Data Analyst</strong>, 2024 – <a href="https://www.udemy.com/certificate/UC-6d01e654-e593-4735-a5a2-6e72c2147707/" target="_blank" style="color: var(--accent-color);">View</a></li>
+        <li><strong>Azure Machine Learning & MLOps</strong>, 2025 – <a href="https://www.udemy.com/certificate/UC-8d4ffeda-b9c2-4444-ab7c-f222a59de271/" target="_blank" style="color: var(--accent-color);">View</a></li>
+      </ul>
+    </section>
+  </main>
 </body>
 
 </html>
